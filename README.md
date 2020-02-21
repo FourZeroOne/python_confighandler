@@ -17,3 +17,7 @@ if CONFIGS is None:
     raise Exception('ERROR: Could not get configs
 ```
     
+
+## Next:
+* parse config file without python config
+* handle dynamic content linked_section
