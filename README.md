@@ -3,6 +3,8 @@
 Example:
 
 ```python
+from confighandler import ConfigHandler
+
 config_settings = [
     {'name': 'db_uri', 'section': 'DATABASE', 'key':  'URI'},
     {'name': 'special_key', 'section': 'APP', 'key':  'SPECIAL_KEY'}
