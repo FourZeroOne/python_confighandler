@@ -1,6 +1,0 @@
-{
-    "HELLO": {
-        "you":{"required": true}
-    } ,
-    "HELLO2": ["you2"]
-}
