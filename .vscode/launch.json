@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "env": {
-                "HELLO2.you2": "ENV VAR",
+                "color": "ENV VAR",
             },
         }
     ]
