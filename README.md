@@ -12,7 +12,6 @@ import os
 from confighandler import ConfigHandler
 
 defaults = {"color": "blue", "user": "guest"}
-}
 
 configs = ConfigHandler('{"color": "red"}', 'settings.json', os.environ, defaults)
 print(configs.get('color'))
