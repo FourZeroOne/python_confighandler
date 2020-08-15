@@ -19,3 +19,5 @@ print(configs.get('color'))
 
 ## Ideas
 Implementation of different string handler for different config types (yaml, configuration language, ...)
+
+## Big thanks to maduck throwing collections and ChainMap at me!!
