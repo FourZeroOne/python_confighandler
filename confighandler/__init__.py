@@ -13,6 +13,12 @@ class ConfigHandler(ChainMap):
 
         super().__init__(*map_values)
 
+    def get_list(self, key):
+        val = self.get(key)
+        if not val:
+            return None
+        return json.loads(val)
+
     def handle_str(self, val):
         if os.path.isfile(val):
             with open(val) as f:

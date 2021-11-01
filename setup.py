@@ -16,7 +16,7 @@ if path.isfile('requirements.txt'):
 
 setup(
     name='python_confighandler',
-    version='0.2.1',
+    version='0.2.2',
     description='Python Confighandler',
     long_description=long_description,
     author='Johannes Eimer Production (JEP)',
