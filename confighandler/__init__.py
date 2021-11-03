@@ -15,9 +15,11 @@ class ConfigHandler(ChainMap):
 
     def get_list(self, key):
         val = self.get(key)
-        if not val:
-            return None
-        return json.loads(val)
+        if type(val) == list:
+            return val
+        elif type(val) in [str, bytes, bytearray]:
+            return json.loads(val)
+        return None
 
     def handle_str(self, val):
         if os.path.isfile(val):
