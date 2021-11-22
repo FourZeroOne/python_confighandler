@@ -10,7 +10,12 @@ phases:
     pre_build:
         commands:
             - curr_working_dir=`pwd`
-            - BRANCH=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | sed 's/refs\/heads\///')
+            - BRANCH=$(echo $CODEBUILD_WEBHOOK_BASE_REF | sed 's/refs\/heads\///')
+            - |
+              if [ "${BRANCH}" = "" ] ; then
+                BRANCH=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | sed 's/refs\/heads\///')
+              fi
+            - echo branch $BRANCH
             - |
               if [ "$BRANCH" = "master" ] ; then
                 pip install s3pypi
