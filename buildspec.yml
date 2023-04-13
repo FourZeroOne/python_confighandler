@@ -1,34 +1,20 @@
 version: 0.2
-env:
-  variables:
-    BRANCH: "master"
 
 phases:
     install:
         runtime-versions:
-            python: 3.8
+            python: 3.9
     pre_build:
         commands:
-            - curr_working_dir=`pwd`
-            - BRANCH=$(echo $CODEBUILD_WEBHOOK_BASE_REF | sed 's/refs\/heads\///')
-            - |
-              if [ "${BRANCH}" = "" ] ; then
-                BRANCH=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | sed 's/refs\/heads\///')
-              fi
-            - echo branch $BRANCH
-            - |
-              if [ "$BRANCH" = "master" ] ; then
-                pip install s3pypi==0.11.1
-              fi
+            - aws codeartifact login --tool pip --repository python-private --domain fourzeroone --domain-owner 495963541969 --region eu-central-1
+            - python3 -m venv venv
+            - source venv/bin/activate
+            - python3 -m pip install --upgrade pip
+            - pip3 install twine build --upgrade
+            - aws codeartifact login --tool twine --repository python-private --domain fourzeroone --domain-owner 495963541969 --region eu-central-1
     build:
         commands:
-            - |
-              if [ "$BRANCH" = "master" ] ; then
-                python setup.py sdist bdist_wheel
-              fi
+            - python3 -m build
     post_build:
         commands:
-            - |
-              if [ "$BRANCH" = "master" ] ; then
-                s3pypi --bucket pypi.fourzero.one --force
-              fi
+            - twine upload --repository codeartifact dist/*
