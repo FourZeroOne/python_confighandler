@@ -21,3 +21,12 @@ print(configs.get('color'))
 Implementation of different string handler for different config types (yaml, configuration language, ...)
 
 ## Big thanks to maduck throwing collections and ChainMap at me!!
+
+## install dev
+python -m venv venv
+venv/Scripts/activate
+pip install -r requirements_dev.txt
+pre-commit install --hook-type pre-push
+
+## build and deploy
+use pipeline!

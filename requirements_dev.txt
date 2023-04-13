@@ -1,0 +1,10 @@
+-e .
+
+pylint
+pre-commit
+black
+flake8
+
+pytest
+pytest-cov
+pyhamcrest
