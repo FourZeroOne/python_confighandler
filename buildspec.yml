@@ -3,7 +3,7 @@ version: 0.2
 phases:
     install:
         runtime-versions:
-            python: 3.9
+            python: 3.11
     pre_build:
         commands:
             - aws codeartifact login --tool pip --repository python-private --domain fourzeroone --domain-owner 495963541969 --region eu-central-1
